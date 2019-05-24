@@ -13,5 +13,5 @@
 	}
 </style>
 
-<h1>Hello {name}, my page is {page}!</h1>
+<h1>Hello {name.toUpperCase()}, my page is {page}!</h1>
 <button on:click="{incrementPage}">Change page</button>
