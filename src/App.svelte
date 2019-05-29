@@ -3,9 +3,14 @@
 	let page = 1;
 
 	$: uppercaseName = name.toUpperCase();
+	$: console.log(name);
+	$: if(name === 'Fix') {
+		console.log('it works');
+		page = 1000;
+	}
 	
 	function incrementPage() {
-		page += 1
+		page += 1;
 	}
 
 	function changeName() {
