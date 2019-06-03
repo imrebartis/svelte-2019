@@ -16,6 +16,11 @@
 	function changeName() {
 		name = 'Fix';
 	}
+
+	function nameInput(event) {
+		const enteredValue = event.target.value;
+		name = enteredValue;
+	}
 </script>
 
 <style>
@@ -26,4 +31,5 @@
 
 <h1>Hello {uppercaseName}, my page is {page}!</h1>
 <button on:click='{incrementPage}'>Change page</button>
-<button on:click='{changeName}'>Change name</button>
+<!-- <button on:click='{changeName}'>Change name</button> -->
+<input type="text" value="{name}" on:input="{nameInput}">
