@@ -32,4 +32,5 @@
 <h1>Hello {uppercaseName}, my page is {page}!</h1>
 <button on:click='{incrementPage}'>Change page</button>
 <!-- <button on:click='{changeName}'>Change name</button> -->
-<input type="text" value="{name}" on:input="{nameInput}">
+<!-- <input type="text" value="{name}" on:input="{nameInput}"> -->
+<input type="text" value="{name}" bind:value="{name}">
