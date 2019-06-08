@@ -1,4 +1,6 @@
 <script>
+	import ContactCard from './ContactCard.svelte';
+
 	let name = 'Mix';
 	let page = 1;
 
@@ -34,3 +36,4 @@
 <!-- <button on:click='{changeName}'>Change name</button> -->
 <!-- <input type="text" value="{name}" on:input="{nameInput}"> -->
 <input type="text" value="{name}" bind:value="{name}">
+<ContactCard />
