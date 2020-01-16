@@ -19,17 +19,19 @@
         "Organic XOXO church-key kitsch neutra subway tile cray meggings edison bulb vegan.",
       imageUrl: "https://picsum.photos/200/300",
       address: "27th Nördern Road, 23323, Nörd Yörk",
-      contactEmail: "code@test.com"
+      contactEmail: "code@test.com",
+      isFavorite: false
     },
     {
-      id: "m1",
+      id: "m2",
       title: "Chill 4ever",
       subtitle: "learn how to chill in 1 sec",
       description:
         "Jianbing tumblr tattooed, yr vinyl microdosing franzen synth cray cred cardigan pug. Literally vaporware art party, blue bottle listicle ethical single-origin coffee aesthetic live-edge fingerstache.",
       imageUrl: "https://picsum.photos/200/300",
       address: "27th Chilly Road, 23323, Chill Fork",
-      contactEmail: "chill@test.com"
+      contactEmail: "chill@test.com",
+      isFavorite: false
     }
   ];
 
@@ -46,11 +48,21 @@
 
     meetups = [newMeetup, ...meetups];
   }
+
+  function toggleFavorite(event) {
+    const id = event.detail;
+    const updatedMeetup = { ...meetups.find(m => m.id === id) };
+    updatedMeetup.isFavorite = !updatedMeetup.isFavorite;
+    const meetupIndex = meetups.findIndex(m => m.id === id);
+    const updatedMeetups = [...meetups];
+    updatedMeetups[meetupIndex] = updatedMeetup;
+    meetups = updatedMeetups;
+  }
 </script>
 
 <style>
   main {
-    margin-top: 5rem
+    margin-top: 5rem;
   }
 
   form {
@@ -74,23 +86,23 @@
       label="Subtitle"
       value={subtitle}
       on:input={event => (subtitle = event.target.value)} />
-     <TextInput
+    <TextInput
       id="address"
       label="Address"
       value={address}
       on:input={event => (address = event.target.value)} />
-     <TextInput
+    <TextInput
       id="imageUrl"
       label="Image Url"
       value={imageUrl}
       on:input={event => (imageUrl = event.target.value)} />
-     <TextInput
+    <TextInput
       id="email"
       label="Email"
       type="email"
       value={email}
       on:input={event => (email = event.target.value)} />
-     <TextInput
+    <TextInput
       id="description"
       label="Description"
       controlType="textarea"
@@ -100,5 +112,5 @@
 
     <Button type="submit" caption="Save" />
   </form>
-  <MeetupGrid {meetups} />
+  <MeetupGrid {meetups} on:togglefavorite={toggleFavorite} />
 </main>
