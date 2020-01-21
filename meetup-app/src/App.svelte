@@ -32,19 +32,22 @@
 
   let editMode = undefined;
 
-  function addMeetup() {
+  function addMeetup({event}) {
     const newMeetup = {
       id: Math.random().toString(),
-      title,
-      subtitle,
-      contactEmail: email,
-      description,
-      imageUrl,
-      address
+      title: event.detail.title,
+      subtitle: event.detail.subtitle,
+      contactEmail: event.detail.email,
+      description: event.detail.description,
+      imageUrl: event.detail.imageUrl,
+      address: event.detail.address
     };
 
     meetups = [newMeetup, ...meetups];
+    editMode = null;
   }
+
+  typeof(value) === 'date'
 
   function toggleFavorite(event) {
     const id = event.detail;
@@ -61,14 +64,20 @@
   main {
     margin-top: 5rem;
   }
+
+  .meetup-controls {
+    margin: 1rem;
+  }
 </style>
 
 <Header />
 
 <main>
-  <Button caption="New Meetup" on:click={() => (editMode = 'add')} />
+  <div class="meetup-controls">
+    <Button caption="New Meetup" on:click={() => (editMode = 'add')} />
+  </div>
   {#if editMode === 'add'}
-    <EditMeetup />
+    <EditMeetup on:save={addMeetup} />
   {/if}
   <MeetupGrid {meetups} on:togglefavorite={toggleFavorite} />
 </main>

@@ -32,10 +32,7 @@
   }
 </style>
 
-<form
-  on:submit|preventDefault={() => {
-    submitForm;
-  }}>
+<form on:submit|preventDefault={submitForm}>
   <TextInput
     id="title"
     label="Title"
@@ -69,6 +66,5 @@
     value={description}
     rows="3"
     on:input={event => (description = event.target.value)} />
-
   <Button type="submit" caption="Save" />
 </form>
