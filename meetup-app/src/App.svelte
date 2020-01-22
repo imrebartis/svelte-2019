@@ -32,7 +32,7 @@
 
   let editMode = undefined;
 
-  function addMeetup({event}) {
+  function addMeetup({ event }) {
     const newMeetup = {
       id: Math.random().toString(),
       title: event.detail.title,
@@ -47,7 +47,7 @@
     editMode = null;
   }
 
-  typeof(value) === 'date'
+  typeof value === "date";
 
   function toggleFavorite(event) {
     const id = event.detail;
@@ -74,7 +74,7 @@
 
 <main>
   <div class="meetup-controls">
-    <Button caption="New Meetup" on:click={() => (editMode = 'add')} />
+    <Button on:click={() => (editMode = 'add')}>New Meetup</Button>
   </div>
   {#if editMode === 'add'}
     <EditMeetup on:save={addMeetup} />
