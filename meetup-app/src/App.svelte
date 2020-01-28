@@ -32,7 +32,7 @@
 
   let editMode = undefined;
 
-  function addMeetup({ event }) {
+  function addMeetup(event) {
     const newMeetup = {
       id: Math.random().toString(),
       title: event.detail.title,
