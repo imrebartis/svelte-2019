@@ -19,7 +19,7 @@ body {
   background: #f3f3f3;
 }
 
-button {
+/* button {
   font: inherit;
   border: 1px solid #cf0056;
   background: #cf0056;
@@ -35,4 +35,4 @@ button:active {
   background: #e40763;
   border-color: #e40763;
   box-shadow: 1px 1px 8px rgba(77, 51, 51, 0.26);
-}
+} */
