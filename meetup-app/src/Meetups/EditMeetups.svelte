@@ -17,6 +17,7 @@
   let addressValid = false;
   let imageUrl = "";
   let imageUrlValid = false;
+  let formIsValid = false;
 
   const dispatch = createEventDispatcher();
 
@@ -30,6 +31,13 @@
   $: descriptionValid = !isEmpty(description);
   $: addressValid = !isEmpty(address);
   $: imageUrlValid = !isEmpty(imageUrl);
+  $: formIsValid =
+    titleValid &&
+    subtitleValid &&
+    emailValid &&
+    descriptionValid &&
+    addressValid &&
+    imageUrlValid;
 
   function submitForm() {
     dispatch("save", {
@@ -74,7 +82,7 @@
       on:input={event => (address = event.target.value)} />
     <TextInput
       id="imageUrl"
-       valid={imageUrlValid}
+      valid={imageUrlValid}
       validityMessage="Please enter a breathtaking image url."
       label="Image Url"
       value={imageUrl}
@@ -89,7 +97,7 @@
       on:input={event => (email = event.target.value)} />
     <TextInput
       id="description"
-       valid={descriptionValid}
+      valid={descriptionValid}
       validityMessage="Please enter a breathtaking description."
       label="Description"
       controlType="textarea"
@@ -99,6 +107,6 @@
   </form>
   <div slot="footer">
     <Button type="button" mode="outline" on:click={cancel}>Cancel</Button>
-    <Button type="button" on:click={submitForm}>Save</Button>
+    <Button type="button" on:click={submitForm} disabled={!formIsValid}>Save</Button>
   </div>
 </Modal>
