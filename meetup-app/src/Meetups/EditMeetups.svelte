@@ -6,18 +6,11 @@
   import { isEmpty, isValidEmail } from "../helpers/validation.js";
 
   let title = "";
-  let titleValid = false;
   let subtitle = "";
-  let subtitleValid = false;
   let email = "";
-  let emailValid = false;
   let description = "";
-  let descriptionValid = false;
   let address = "";
-  let addressValid = false;
   let imageUrl = "";
-  let imageUrlValid = false;
-  let formIsValid = false;
 
   const dispatch = createEventDispatcher();
 
@@ -101,12 +94,13 @@
       validityMessage="Please enter a breathtaking description."
       label="Description"
       controlType="textarea"
-      value={description}
-      rows="3"
-      on:input={event => (description = event.target.value)} />
+      bind:value={description}
+      rows="3" />
   </form>
   <div slot="footer">
     <Button type="button" mode="outline" on:click={cancel}>Cancel</Button>
-    <Button type="button" on:click={submitForm} disabled={!formIsValid}>Save</Button>
+    <Button type="button" on:click={submitForm} disabled={!formIsValid}>
+      Save
+    </Button>
   </div>
 </Modal>
