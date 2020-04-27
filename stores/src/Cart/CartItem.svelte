@@ -1,5 +1,7 @@
 <script>
+  import cartItems from "./cart-store.js";
   import Button from "../UI/Button.svelte";
+  import { products } from "../Products/products-store.js";
 
   export let title;
   export let price;
@@ -12,8 +14,9 @@
   }
 
   function removeFromCart() {
-    // ...
-    console.log("Removing...");
+    cartItems.update(items => {
+      return items.filter(i => i.id !== id);
+    });
   }
 </script>
 
