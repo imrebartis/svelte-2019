@@ -1,7 +1,12 @@
 <script>
-import {onDestroy} from "svelte";
+  import { onDestroy } from "svelte";
   import cartItems from "./cart-store.js";
   import CartItem from "./CartItem.svelte";
+  import { timer } from "../timer-store";
+
+  const unsubscribe = timer.subscribe(count => {
+    console.log('Cart: ' + count)
+  })
 
   // let items;
 
@@ -9,12 +14,11 @@ import {onDestroy} from "svelte";
   //   items = its;
   // });
 
-  // onDestroy(() => {
-  //   if (unsubscribe) {
-  //     unsubscribe();
-  //   }
-  // })
-
+  onDestroy(() => {
+    if (unsubscribe) {
+      unsubscribe();
+    }
+  })
 </script>
 
 <style>
